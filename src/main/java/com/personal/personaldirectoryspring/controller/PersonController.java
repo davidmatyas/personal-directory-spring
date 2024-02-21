@@ -19,19 +19,19 @@ public class PersonController {
     private final PersonService personService;
 
     @PostMapping
-    public ResponseEntity createPerson(@RequestBody PersonDto request) {
+    public ResponseEntity<HttpStatus> createPerson(@RequestBody PersonDto request) {
         personService.createPerson(request);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @DeleteMapping("/{personId}")
-    public ResponseEntity deletePerson(@PathVariable("personId") Long id) {
+    public ResponseEntity<HttpStatus> deletePerson(@PathVariable("personId") Long id) {
         personService.deletePerson(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @GetMapping("/{person-name}")
-    public ResponseEntity getPersonForName(@PathVariable("person-name") String personName) {
+    public ResponseEntity<PersonDto> getPersonForName(@PathVariable("person-name") String personName) {
         personService.getPersonForName(personName);
         return ResponseEntity.ok(personService.getPersonForName(personName));
     }
@@ -43,8 +43,9 @@ public class PersonController {
 
 
     @PutMapping("{customerId}")
-    public ResponseEntity updatePerson(@PathVariable("customerId") Long id,
-                                       @RequestBody PersonUpdateDto request) {
+    public ResponseEntity<HttpStatus> updatePerson(
+            @PathVariable("customerId") Long id,
+            @RequestBody PersonUpdateDto request) {
         personService.updatePerson(id, request);
         return ResponseEntity.ok(HttpStatus.OK);
     }
