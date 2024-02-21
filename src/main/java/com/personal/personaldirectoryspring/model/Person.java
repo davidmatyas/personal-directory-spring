@@ -2,15 +2,14 @@ package com.personal.personaldirectoryspring.model;
 
 import com.personal.personaldirectoryspring.model.enums.Sex;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "person")
